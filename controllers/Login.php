@@ -1,6 +1,12 @@
 <?php
 class Login extends CI_Controller
 {
+    function __construct()
+    {
+
+        parent::__construct();
+        $this->load->model('Regmodel');
+    }
 
 	function index()
 	{
@@ -12,15 +18,28 @@ class Login extends CI_Controller
     {
     	$email = $this->input->post("txtemail");
     	$pass = $this->input->post("txtpass");
-    	if($email=="abc@gmail.com" && $pass=="12345")
-    	{
-    		redirect('Addition/index');
-    	}
-    	else
-    	{
-    		$data = array("error"=>"invalid emailid and password");
-    		$this->load->view('loginview',$data);
-    	}
+
+        if($this->form_validation->run('login')==False)
+         {
+            $this->load->view('loginview');
+         }
+         else{
+
+         $count = $this->Regmodel->LoginDB($email,$pass);
+        if($count > 0)
+        {
+            $data = array("msg"=>"welcome user");
+            $this->load->view('dashboardview',$data);
+        }
+        else
+        {
+            $data = array("error"=>"invalid emailid and password");
+            $this->load->view('loginview',$data);
+        }
+
+         }
+
+        
 
 
     }
