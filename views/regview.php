@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-<form action="<?php echo site_url(); ?>/register/index" method="post">
+<form name="frmreg" action="<?php echo site_url(); ?>/register/index" method="post">
 <div class="form-group">
 <label for="email">Email:</label>
 <input type="text" class="form-control" placeholder="enter email" name="txtemail"  />
@@ -29,6 +29,7 @@
 <div class="form-group">
 	<?php
 	echo validation_errors();
+  echo @$msg; 
 	?>
 </div>
 </form>

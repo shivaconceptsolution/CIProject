@@ -15,11 +15,11 @@
 <form action="<?php echo site_url(); ?>/login/index" method="post">
 <div class="form-group">
 <label for="email">Email:</label>
-<input type="email" class="form-control" placeholder="enter email" name="txtemail" required="" />
+<input type="text" class="form-control" placeholder="enter email" name="txtemail"  />
 </div>
 <div class="form-group">
 <label for="password">Password:</label>
-<input type="password" class="form-control" placeholder="enter password" name="txtpass" required="" />
+<input type="password" class="form-control" placeholder="enter password" name="txtpass"  />
 </div>
 <div class="form-group">
 
@@ -28,7 +28,8 @@
 
 <div class="form-group">
 	<?php
-	echo @$error;
+  echo validation_errors();
+  echo @$error;
 	?>
 </div>
 </form>
