@@ -8,8 +8,12 @@
         array(
         array(
                 'field' => 'txtemail',
-                'label' => 'Username',
-                'rules' => 'required'
+                'label' => 'Email',
+                'rules' => 'required|is_unique[admin.email]',
+                'errors' => array(
+                'required' => 'Please tell us your %s',
+                'is_unique' => ' %s already exist',
+            ),
         ),
         array(
                 'field' => 'txtpass',
@@ -27,7 +31,7 @@
         array(
         array(
                 'field' => 'txtemail',
-                'label' => 'Username',
+                'label' => 'Email',
                 'rules' => 'required'
         ),
         array(
