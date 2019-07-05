@@ -16,6 +16,12 @@ class Regmodel extends CI_Model
         return $this->db->affected_rows();
      }
 
+     function viewuser()
+     {
+        $res=  $this->db->get('admin');
+        return  $res->result_array();
+
+     }
      function LoginDB($email,$pass)
      {
      	$x = $this->db->get_where('admin',array('email'=>$email,'password'=>$pass));

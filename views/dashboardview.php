@@ -4,6 +4,16 @@
 	<title>Dashboard</title>
 </head>
 <body>
-  <?php echo $msg; ?>
+  <?php 
+ // print_r($arr);
+  foreach($arr as $x)
+  {
+  	foreach ($x as $key) {
+  		echo $key." ";
+  	}
+  	echo "<hr>";
+  }
+
+   ?>
 </body>
 </html>
