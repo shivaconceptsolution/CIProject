@@ -28,8 +28,10 @@ class Login extends CI_Controller
          $count = $this->Regmodel->LoginDB($email,$pass);
         if($count > 0)
         {
-            $data = array("msg"=>"welcome user");
-            $this->load->view('dashboardview',$data);
+            $this->session->set_userdata('uid',$email);
+            redirect('dashboard/index');
+            //$data = array("msg"=>"welcome user");
+           // $this->load->view('dashboardview',$data);
         }
         else
         {
