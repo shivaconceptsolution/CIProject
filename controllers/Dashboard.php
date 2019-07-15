@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller
     }
     function index()
     {
+       echo get_cookie('cuid'); 
        $data['arr'] = $this->Regmodel->viewuser();
        $this->load->view('dashboardview',$data);
 

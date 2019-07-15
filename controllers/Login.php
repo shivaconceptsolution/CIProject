@@ -5,6 +5,8 @@ class Login extends CI_Controller
     {
 
         parent::__construct();
+        $this->load->helper('notice');
+        $this->load->library('courseinfo');
         $this->load->model('Regmodel');
     }
 
@@ -12,6 +14,8 @@ class Login extends CI_Controller
 	{
 	if($this->input->post('btnsubmit')==null)
 	{
+        displayNotice();
+        $this->courseinfo->courseDetails();
        $this->load->view('loginview');
     }
     else
@@ -28,6 +32,7 @@ class Login extends CI_Controller
          $count = $this->Regmodel->LoginDB($email,$pass);
         if($count > 0)
         {
+            set_cookie('cuid',$email,'3600');
             $this->session->set_userdata('uid',$email);
             redirect('dashboard/index');
             //$data = array("msg"=>"welcome user");
