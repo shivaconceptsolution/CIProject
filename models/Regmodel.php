@@ -22,6 +22,13 @@ class Regmodel extends CI_Model
         return  $res->result_array();
 
      }
+      function findrecord1($id)
+     {
+        $s = $id."%";
+        $res=  $this->db->query("select * from admin where email like '$s'");
+        return  $res->result_array();
+
+     }
      function findrecord($id)
      {
         $res=  $this->db->get_where('admin',array("id"=>$id));
